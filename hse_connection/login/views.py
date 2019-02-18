@@ -15,3 +15,5 @@ def login(request):
     # Creates the login form
 	else:
 		return render(request, 'login/signin.html')
+
+
