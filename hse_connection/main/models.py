@@ -12,7 +12,7 @@ class UserProfile(models.Model):
 		('Perm','Perm')
 	]
 
-	email = models.EmailField()
+	user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
 	position = models.CharField(max_length=250)
 	avatar = models.ImageField()
 	campus = models.CharField(choices=CAMPUS_CHOICES, max_length=100)
