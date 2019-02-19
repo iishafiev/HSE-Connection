@@ -5,17 +5,11 @@ from django.contrib.auth.models import User
 Stores user information
 '''
 class UserProfile(models.Model):
-	CAMPUS_CHOICES = [
-		('Msc','Moscow'),
-		('Spb','Saint-Petersburg'),
-		('NNvgd','Nizhny Novgorod'),
-		('Perm','Perm')
-	]
-
 	user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
 	position = models.CharField(max_length=250)
 	avatar = models.ImageField()
-	campus = models.CharField(choices=CAMPUS_CHOICES, max_length=100)
+	campus = models.CharField(max_length=100)
+	faculty = models.CharField(max_length=250)
 
 
 '''

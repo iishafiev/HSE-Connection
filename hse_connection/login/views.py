@@ -1,45 +1,57 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+
+from main.models import UserProfile
 
 def login(request):
-   # Checks received user data
-   if request.method == 'POST':
-      username = request.POST['inputEmail']
-      password = request.POST['inputPassword']
-      user = authenticate(request, username=username, password=password)
-      if user:
-         login(request, user)
-         return redirect('index')
-      else:
-         message = "Неправильный логин или пароль"
-         return render(request, 'login/signin.html', {'message': message})
+	# Checks received user data
+	if request.method == 'POST':
+		username = request.POST['inputEmail']
+		password = request.POST['inputPassword']
+		user = authenticate(request, username=username, password=password)
+		if user:
+			login(request, user)
+			return redirect('index')
+		else:
+			message = "Неправильный логин или пароль"
+			return render(request, 'login/signin.html', {'message': message})
 
-   # Creates the login form
-   else:
-      return render(request, 'login/signin.html')
+	# Creates the login form
+	else:
+		return render(request, 'login/signin.html')
 
 
 def register(request):
 	if request.method == 'POST':
-   		email = request.POST['inputEmail']
-   		password = request.POST['inputPassword']
-   		password_repeat = request.POST['confirmPassword']
-   		name = request.POST['inputName']
-   		surname = request.POST['inputSurname']
-   		campus = request.POST['inputCampus']
-   		faculty = request.POST['inputFaculty']
-   		photo = request.POST['inputPhoto']
+		name = request.POST['inputName']
+		surname = request.POST['inputSurname']
+		email = request.POST['inputEmail']
+		password = request.POST['inputPassword']
+		password_repeat = request.POST['confirmPassword']
+		campus = request.POST['inputCampus']
+		faculty = request.POST['inputFaculty']
+		photo = request.POST['inputPhoto']
 
-   		# if User.objects.filter(username=username).exists():
-   		# 	message = 'Простите, пользователь с таким именем уже существует'
-   		# 	return render(request, 'login/register.html', {'message': message})
+		# creates new user
+		if User.objects.filter(email = email).exists():
+			message = "Пользователь с такой почтой уже зарегистрирован"
+			return render(request, 'login/register.html', {'message': message})
 
-   		# elif password != password_repeat:
-   		# 	message = 'Неверно повторен пароль'
-   		# 	return render(request, 'login/register.html', {'message': message})
+		else:
+			user = User.objects.create_user(
+				username = name + '_' + surname,
+				first_name = name,
+				last_name = surname,
+				email = email,
+				password = password
+				)
 
-   		# else:
-   		# 	User.objects.create_user(username=username, password=password)
-   		# 	return redirect('login')
+			UserProfile.objects.create(
+				user = user,
+				avatar = photo,
+				campus = campus,
+				faculty = faculty
+            )
 
 	else:
 		return render(request, 'login/register.html')
