@@ -19,11 +19,6 @@
   <body class="text-center bg-dark">
 
     <div class="container">
-
-      {% if message %}
-        <p>{{message}}</p>
-      {% endif %}
-
       <form class="bg-white" oninput='up2.setCustomValidity(up2.value != up.value ? "Пароли не совпадают." : "")' enctype="multipart/form-data">
         <h1 class="mt-3">Регистрация</h1>
         <div class="form-row">
@@ -72,11 +67,16 @@
               <span class="input-group-text" id="inputGroupFileAddon">Фотография</span>
             </div>
             <div class="custom-file">
-              <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+              <input type="file" accept="image/*" class="custom-file-input" id="inputPhoto" aria-describedby="inputPhotoAddon">
               <label class="custom-file-label" for="inputPhoto">Выбрать файл</label>
             </div>
           </div>
         </div>
+        {% if message %}
+        <div class="alert alert-danger" role="alert">
+          {{message}}
+        </div>
+        {% endif %}
         <div class="form-row">
           <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
         </div>
