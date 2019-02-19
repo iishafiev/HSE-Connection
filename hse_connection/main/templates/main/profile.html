@@ -68,7 +68,35 @@
         <a href="#" class="badge badge-pill badge-dark">Иностранные языки</a>
         <a href="#" class="badge badge-pill badge-dark">Бизнес</a>
         <a href="#" class="badge badge-pill badge-dark">Машинное обучение</a>
-        <a href="#" class="badge badge-pill badge-dark">+</a>
+        <button type="button" class="btn btn-dark badge badge-pill badge-dark" data-toggle="modal" data-target="#newHashtag">+</button>
+        <div class="modal fade" id="newHashtag" tabindex="-1" role="dialog" aria-labelledby="newHashtagLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <!--Modal header-->
+              <div class="modal-header">
+                <h5 class="modal-title" id="newHashtagLabel">Новая запись</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!--Modal body-->
+              <div class="modal-body">
+                <form>
+                  <!--Новый интерес-->
+                  <div class="form-group">
+                    <label for="hashtag" class="col-form-label">Новый интерес:</label>
+                    <input type="text" class="form-control" id="hashtag" required>
+                  </div>
+                  <!--Кнопки "закрыть" и "сохранить"-->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-dark">Сохранить</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--Блок с лентой и деятельностью-->
         <div class="card mt-3">
           <!--Заголовок блока-->
@@ -93,22 +121,27 @@
                 <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
+                      <!--Modal header-->
                       <div class="modal-header">
                         <h5 class="modal-title" id="newPostModalLabel">Новая запись</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
+                      <!--Modal body-->
                       <div class="modal-body">
                         <form>
+                          <!--Заголовок записи-->
                           <div class="form-group">
                             <label for="post-head" class="col-form-label">Заголовок:</label>
-                            <input type="text" class="form-control" id="recipient-name" required>
+                            <input type="text" class="form-control" id="post-head" required>
                           </div>
+                          <!--Текст записи-->
                           <div class="form-group">
                             <label for="post-body" class="col-form-label">Текст:</label>
                             <textarea class="form-control" id="post-body" required></textarea>
                           </div>
+                          <!--Картинка-->
                           <div class="form-group">
                             <label for="post-image" class="col-form-label">Изображение (опционально):</label>
                             <div class="custom-file">
@@ -116,6 +149,7 @@
                               <label class="custom-file-label" for="inputPhoto">Выбрать файл</label>
                             </div>
                           </div>
+                          <!--Кнопки "закрыть" и "сохранить"-->
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                             <button type="submit" class="btn btn-dark">Сохранить</button>
@@ -127,7 +161,7 @@
                 </div>
                 <!--Сетка с постами-->
                 <div class="row">
-                  <div class="col">
+                  <div class="col-lg-6">
                     <div class="card border-light mb-3">
                       <img src="ph1.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
@@ -138,7 +172,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-lg-6">
                     <div class="card border-light mb-3">
                       <img src="ph.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
@@ -151,7 +185,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-lg-6">
                     <div class="card border-light mb-3">
                       <img src="ph.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
@@ -162,7 +196,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-lg-6">
                     <div class="card border-light mb-3">
                       <img src="ph.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
