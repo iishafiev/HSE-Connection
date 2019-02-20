@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 Stores user information
 '''
 class UserProfile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
+	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
 	position = models.CharField(max_length=250)
-	avatar = models.ImageField()
+	avatar = models.ImageField(upload_to='user_avatars')
 	campus = models.CharField(max_length=100)
 	faculty = models.CharField(max_length=250)
 

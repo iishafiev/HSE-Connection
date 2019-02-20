@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import logout as user_logout
 from django.contrib.auth.models import User
 
 from main.models import UserProfile
@@ -6,8 +7,9 @@ from main.models import UserProfile
 def login(request):
 	# Checks received user data
 	if request.method == 'POST':
-		username = request.POST['inputEmail']
+		email = request.POST['inputEmail']
 		password = request.POST['inputPassword']
+		username = User.objects.get(email=email).username
 		user = authenticate(request, username=username, password=password)
 		if user:
 			login(request, user)
@@ -55,3 +57,7 @@ def register(request):
 
 	else:
 		return render(request, 'login/register.html')
+
+def logout(request):
+	user_logout(request)
+	return redirect('login')
