@@ -36,8 +36,8 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="">ФИО</span>
             </div>
-            <input type="text" class="form-control" id="inputSurname" placeholder="Фамилия">
-            <input type="text" class="form-control" id="inputName" placeholder="Имя">
+            <input type="text" class="form-control" id="inputSurname" placeholder="Фамилия" required>
+            <input type="text" class="form-control" id="inputName" placeholder="Имя" required>
           </div>
         </div>
         <div class="form-row">
@@ -45,19 +45,18 @@
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect">Факультет</label>
             </div>
-            <select class="custom-select" id="inputCampus">
-              <option selected>Кампус</option>
-              <option value="1">Москва</option>
-              <option value="2">Санкт-Петербург</option>
-              <option value="3">Нижний Новгород</option>
-              <option value="3">Пермь</option>
+            <select class="custom-select" id="inputCampus" >
+              <option value="Москва" selected>Москва</option>
+              <option value="Санкт-Петербург">Санкт-Петербург</option>
+              <option value="Нижний Новгород">Нижний Новгород</option>
+              <option value="Пермь">Пермь</option>
             </select>
             <select class="custom-select" id="inputFaculty">
               <option selected>Факультет</option>
-              <option value="1">Факультет компьютерных наук</option>
-              <option value="2">Факультет бизнеса и менеджмента</option>
-              <option value="3">Факультет экономических наук</option>
-              <option value="3">Факультет еще чего-то там</option>
+              <option value="Факультет компьютерных наук">Факультет компьютерных наук</option>
+              <option value="Факультет бизнеса и менеджмента">Факультет бизнеса и менеджмента</option>
+              <option value="Факультет экономических наук">Факультет экономических наук</option>
+              <option value="Факультет еще чего-то там">Факультет еще чего-то там</option>
             </select>
           </div>
         </div>
