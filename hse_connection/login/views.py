@@ -1,18 +1,19 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout as user_logout
+from django.contrib.auth import logout as user_logout, authenticate, login as user_login
 from django.contrib.auth.models import User
 
 from main.models import UserProfile
+from .forms import LoginForm
 
 def login(request):
 	# Checks received user data
 	if request.method == 'POST':
-		email = request.POST['inputEmail']
-		password = request.POST['inputPassword']
+		email = request.POST['username']
+		password = request.POST['password']
 		username = User.objects.get(email=email).username
 		user = authenticate(request, username=username, password=password)
 		if user:
-			login(request, user)
+			user_login(request, user)
 			return redirect('index')
 		else:
 			message = "Неправильный логин или пароль"
@@ -20,7 +21,8 @@ def login(request):
 
 	# Creates the login form
 	else:
-		return render(request, 'login/signin.html')
+		form = LoginForm
+		return render(request, 'login/signin.html', {'form': form})
 
 
 def register(request):
