@@ -141,6 +141,16 @@
                             <label for="post-body" class="col-form-label">Текст:</label>
                             <textarea class="form-control" id="post-body" required></textarea>
                           </div>
+                          <!--Тэг-->
+                          <div class="form-group">
+                            <label for="hashtagInPost" class="col-form-label">Тэг:</label>
+                            <select class="custom-select" id="hashtagInPost">
+                              <option disabled selected>Добавить тэг</option>
+                              <option value="1">Внимательно</option>
+                              <option value="2">Рассмотри</option>
+                              <option value="3">Человека</option>
+                            </select>
+                          </div>
                           <!--Картинка-->
                           <div class="form-group">
                             <label for="post-image" class="col-form-label">Изображение (опционально):</label>
@@ -163,22 +173,22 @@
 
                 {% for publication in publications %}
 
-                  <div class="row">
-                    <div class="card border-light mb-3">
-                      <div class="card-body">
-                        <h5 class="card-title">{{publication.name}}</h5>
-                        <p class="card-text">{{publication.text}}</p>
-                        <hr>
-                        <p class="card-text text-secondary">{{publication.date|date:'Y-m-d H:i'}}</p>
-                      </div>
+                <div class="row">
+                  <div class="card border-light mb-3">
+                    <div class="card-body">
+                      <h5 class="card-title">{{publication.name}}</h5>
+                      <p class="card-text">{{publication.text}}</p>
+                      <hr>
+                      <p class="card-text text-secondary">{{publication.date|date:'Y-m-d H:i'}}</p>
                     </div>
                   </div>
+                </div>
 
                 {% endfor %}
-
+              </div>
               <!--Деятельность-->
               <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
-
+                Пизда
               </div>
             </div>
           </div>
