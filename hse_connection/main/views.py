@@ -10,6 +10,7 @@ def index(request):
 	else:
 		return redirect('login')
 
+
 def profile(request, pk):
 	user = get_object_or_404(User, pk = pk)
 	profile = get_object_or_404(UserProfile, user = user)
@@ -20,3 +21,8 @@ def profile(request, pk):
 		'publications': publications
 	}
 	return render(request, 'main/profile.html', args)
+
+
+def feed(request):
+	publications = Publication.objects.all()
+	return render(request, 'main/feed.html', {'publications': publications})

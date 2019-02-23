@@ -23,10 +23,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Моя страница<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'index' %}">Моя страница<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Новости</a>
+            <a class="nav-link" href="{% url 'feed' %}">Новости</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Сообщения</a>
@@ -45,6 +45,21 @@
   </nav>
   <!--Body-->
   <div class="container">
+
+    {% for publication in publications %}
+
+      <div class="row">
+        <div class="card border-light mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{publication.name}}</h5>
+            <p class="card-text">{{publication.text}}</p>
+            <hr>
+            <p class="card-text text-secondary">{{publication.date|date:'Y-m-d H:i'}}</p>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
 
   </div>
   <!--Scripts-->
